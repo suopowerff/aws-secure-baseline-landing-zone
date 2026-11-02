@@ -17,11 +17,7 @@ An enterprise-grade, Infrastructure-as-Code (Terraform) AWS Landing Zone designe
   * Customer-Managed Key (CMK) configured with mandatory 365-day automated key rotation and least-privilege key policies.
 * **Security Posture Dashboard (Next.js 14):**
   * Built with Next.js 14 (App Router) and Tailwind CSS.
-  * Features a flexible dual-mode backend that supports both a **Live AWS SDK Mode** (for production environments with IAM credentials) and a **Zero-Credential Simulation Mode** (`NEXT_PUBLIC_DEMO_MODE=true`) for local previews and portfolio reviews without incurring cloud costs.
-
----
-
-## Quick Start (No AWS Account Required)
+  * Features a flexible dual-mode backend that supports both a **Live AWS SDK Mode** (for production environments with IAM credentials) and a **Zero-Credential Simulation Mode** (`NEXT_PUBLIC_DEMO_MODE=true`) for local previews reviews without incurring cloud costs.
 
 ### 1. Run the Next.js Posture Dashboard (Simulation Mode)
 ```bash
