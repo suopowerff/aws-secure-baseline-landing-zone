@@ -1,0 +1,40 @@
+﻿name: "Security Baseline CI (Terraform & Next.js)"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validate-terraform:
+    name: "Validate Terraform IaC (Offline)"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./terraform
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.8.0"
+      - name: Initialize Providers (Offline)
+        run: terraform init -backend=false
+      - name: Validate HCL Syntax
+        run: terraform validate
+
+  build-dashboard:
+    name: "Build Next.js Posture Dashboard"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./status-dashboard
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install & Build
+        run: |
+          npm install
+          npm run build
